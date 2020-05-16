@@ -94,7 +94,7 @@ stages:
         artifactName: dropDacpac
       condition: succeededOrFailed()
 
-  - stage: DBAVerificationScript
+- stage: DBAVerificationScript
   displayName: 'Script database schema changes'
   dependsOn: Build
   jobs:
@@ -132,7 +132,7 @@ stages:
                 Write-Host "Auto Generated SQL Update Script:"
                 Get-Content d:\a\1\s\GeneratedOutputFiles\$(databasename)_Script.sql | foreach {Write-Output $_}
 
-  - stage: DBAVerificationApply
+- stage: DBAVerificationApply
   displayName: 'Apply database schema changes'
   dependsOn: DBAVerificationScript
   jobs:
